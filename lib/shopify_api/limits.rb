@@ -17,7 +17,7 @@ module ShopifyAPI
 
       ##
       # How many more API calls can I make?
-      # @return {Integer}
+      # @return {Fixnum}
       #
       def credit_left
         credit_limit(:shop) - credit_used(:shop)
@@ -37,7 +37,7 @@ module ShopifyAPI
       # How many total API calls can I make?
       # NOTE: subtracting 1 from credit_limit because I think ShopifyAPI cuts off at 299 or shop limits.
       # @param {Symbol} scope [:shop]
-      # @return {Integer}
+      # @return {Fixnum}
       #
       def credit_limit(scope = :shop)
         api_credit_limit_param(scope).pop.to_i - 1
@@ -47,7 +47,7 @@ module ShopifyAPI
       ##
       # How many API calls have I made?
       # @param {Symbol} scope [:shop]
-      # @return {Integer}
+      # @return {Fixnum}
       #
       def credit_used(scope = :shop)
         api_credit_limit_param(scope).shift.to_i
